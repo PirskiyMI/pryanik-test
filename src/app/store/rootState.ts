@@ -1,5 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-export const rootReducer = combineReducers({});
+import { userReducer } from 'entities/user';
+
+export const rootReducer = combineReducers({
+   user: userReducer,
+});
 
 export type RootState = ReturnType<typeof rootReducer>;
