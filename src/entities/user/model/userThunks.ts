@@ -20,7 +20,10 @@ export const fetchUserToken = createAsyncThunk<
    try {
       return await axiosRequest
          .post<IResponse>('/ru/data/v3/testmethods/docs/login', user)
-         .then((res) => res.data.data.token);
+         .then((res) => {
+            localStorage.setItem('token', res.data.data.token);
+            return res.data.data.token;
+         });
    } catch (error) {
       console.log(error);
       return rejectWithValue('Ошибка при запросе токена');

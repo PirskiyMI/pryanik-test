@@ -1,14 +1,19 @@
-import { fetchUserToken } from 'entities/user';
-import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { Box } from '@mui/material';
 
-import { useAppDispatch } from 'shared/lib/hooks';
+import { routeEnum } from 'shared/constants';
+import { useAppSelector } from 'shared/lib/hooks';
+import { userTokenSelector } from 'entities/user';
+import { AuthFrom } from 'features/authForm';
 
 export const AuthPage = () => {
-   const dispatch = useAppDispatch();
+   const accessToken = useAppSelector(userTokenSelector);
 
-   useEffect(() => {
-      dispatch(fetchUserToken({ username: 'user13', password: 'password1' }));
-   }, [dispatch]);
+   if (accessToken) return <Navigate to={routeEnum.MAIN_PAGE} replace />;
 
-   return <div>AuthPage</div>;
+   return (
+      <Box component="div">
+         <AuthFrom />
+      </Box>
+   );
 };

@@ -8,7 +8,7 @@ export interface IState {
 }
 
 const initialState: IState = {
-   token: null,
+   token: localStorage.getItem('token') ? localStorage.getItem('token') : null,
    loading: false,
    error: null,
 };
