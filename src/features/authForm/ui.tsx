@@ -1,4 +1,4 @@
-import { FC, UIEvent } from 'react';
+import { FC } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector, useInput, useIsRequire } from 'shared/lib/hooks';
@@ -15,8 +15,7 @@ export const AuthFrom: FC = () => {
    const requestError = useAppSelector(userErrorSelector);
    const dispatch = useAppDispatch();
 
-   const handleAuth = (e: UIEvent<HTMLFormElement>) => {
-      e.preventDefault();
+   const handleAuth = () => {
       if (!username.value) {
          usernameHandleError(true);
       }
@@ -40,7 +39,6 @@ export const AuthFrom: FC = () => {
             borderRadius: 1,
          }}>
          <Box
-            onSubmit={handleAuth}
             component="form"
             autoComplete="true"
             sx={{ display: 'flex', flexDirection: 'column', rowGap: '16px' }}>
@@ -57,7 +55,11 @@ export const AuthFrom: FC = () => {
                {...password}
                {...passwordError}
             />
-            <Button variant="contained" disabled={isLoading} sx={{ alignSelf: 'center' }}>
+            <Button
+               variant="contained"
+               disabled={isLoading}
+               onClick={handleAuth}
+               sx={{ alignSelf: 'center' }}>
                Войти
             </Button>
             {requestError && (

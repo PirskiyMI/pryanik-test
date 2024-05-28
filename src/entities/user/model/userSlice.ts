@@ -16,7 +16,11 @@ const initialState: IState = {
 const userSlice = createSlice({
    name: 'user',
    initialState,
-   reducers: {},
+   reducers: {
+      clearToken: (state) => {
+         state.token = null;
+      },
+   },
    extraReducers: (builder) => {
       builder
          .addCase(fetchUserToken.pending, (state) => {
@@ -35,3 +39,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
+export const userActions = userSlice.actions;

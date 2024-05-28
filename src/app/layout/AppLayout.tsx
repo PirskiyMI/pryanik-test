@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
 
+import { TheHeader } from 'widgets/theHeader';
+
 export const AppLayout = () => {
    return (
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-         <Box component="header">Header</Box>
+         <TheHeader />
          <Box
             component="main"
             sx={{
