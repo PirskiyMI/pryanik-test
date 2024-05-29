@@ -14,10 +14,7 @@ export const LogOutButton: FC = () => {
    };
 
    return (
-      <Button
-         variant="outlined"
-         onClick={handleLogOut}
-         sx={{ color: 'whitesmoke', borderColor: 'whitesmoke' }}>
+      <Button variant="contained" onClick={handleLogOut} color="error">
          Выйти
       </Button>
    );

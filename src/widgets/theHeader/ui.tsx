@@ -8,8 +8,9 @@ export const TheHeader: FC = () => {
    const isAuth = useAppSelector(userTokenSelector);
 
    return (
-      <AppBar component="header">
+      <AppBar component="header" position="static">
          <Container
+            maxWidth={false}
             sx={{
                display: 'flex',
                alignItems: 'center',
@@ -17,7 +18,7 @@ export const TheHeader: FC = () => {
                p: '1rem 0',
             }}>
             <Typography component="h1" variant="h6">
-               Pryanik Text
+               Pryanik Test
             </Typography>
             {isAuth && <LogOutButton />}
          </Container>
