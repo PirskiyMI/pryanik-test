@@ -14,7 +14,7 @@ export default defineConfig({
          shared: '/src/shared',
       },
    },
-   base: '/pryanik/',
+   base: '/pryanik-test/',
    server: {
       port: 3000,
    },
